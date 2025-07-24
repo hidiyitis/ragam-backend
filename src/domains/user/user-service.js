@@ -9,9 +9,11 @@ class UserService {
 
     async getUserById(payload) {
         const {uid} = payload;
+        console.log(uid);
+        
         try {
             const result = await this.prisma.user.findUnique({ 
-                where: {uid: Number(uid)}, 
+                where: {uid: uid}, 
                 include: {
                     portofolios: true
                 }
