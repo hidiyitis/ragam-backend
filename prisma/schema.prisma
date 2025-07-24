@@ -87,7 +87,7 @@ model Kriya {
 }
 
 model Portofolio {
-  id          String   @id @default(uuid()) // Added primary key
+  id          String   @id @default(autoIncrement())
   url         String
   uid         String
   user        User     @relation(fields: [uid], references: [uid], onDelete: Cascade)
