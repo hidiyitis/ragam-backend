@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id             Int       @id @default(autoincrement())
+  title          String    @db.VarChar(255)
+  description    String    @db.Text
+  price          Float
+
+  created_at     DateTime  @default(now())
+  updated_at     DateTime? @updatedAt
+  deleted_at     DateTime?
+  
+  kriyas         Kriya[]
+  photos         Photo[]
+   
+  @@map("products") 
+}
+
+model Photo {
+  id             Int       @id @default(autoincrement())
+  url            String    @db.VarChar(512)
+  
+  product_id     Int?
+  product        Product?  @relation(fields: [product_id], references: [id])
+  kriya_id       Int?
+  kriya          Kriya?    @relation(fields: [kriya_id], references: [id])
+
+  @@index([product_id])
+  @@index([kriya_id])
+  @@map("photos")
+}
+
+model Video {
+  id             Int       @id @default(autoincrement())
+  title          String    @db.VarChar(255)
+  description    String    @db.VarChar(255)
+  url            String    @db.VarChar(512)
+  isTutorial     Boolean   @default(false)
+  
+  kriya_id       Int?
+  kriya          Kriya?    @relation(fields: [kriya_id], references: [id])
+
+  @@index([kriya_id])
+  @@map("videos")
+}
+
+model Kriya {
+  id             Int       @id @default(autoincrement())
+  title          String    @db.VarChar(255)
+  from           String    @db.VarChar(100)
+  history        String    @db.Text
+  philosophy     String    @db.Text
+  unique         String    @db.Text
+  fun_fact       String    @db.Text
+  viewCount      Int       @default(0)
+  isUnderated   Boolean   @default(false)
+
+  product_id     Int?
+  product        Product?  @relation(fields: [product_id], references: [id]) // Made optional
+  photos         Photo[]
+  videos         Video[]
+
+  created_at     DateTime  @default(now())
+  updated_at     DateTime? @updatedAt
+  deleted_at     DateTime?
+
+  // Indexes
+  @@index([product_id])
+  @@index([title]) // Added for better search performance
+  @@map("kriyas")
+}
