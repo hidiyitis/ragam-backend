@@ -19,6 +19,7 @@ model Product {
   title          String    @db.VarChar(255)
   description    String    @db.Text
   price          Float
+  package_kit    String   @db.Text
 
   created_at     DateTime  @default(now())
   updated_at     DateTime? @updatedAt
@@ -47,7 +48,8 @@ model Photo {
 model Video {
   id             Int       @id @default(autoincrement())
   title          String    @db.VarChar(255)
-  description    String    @db.VarChar(255)
+  thumbnail      String    @db.VarChar(255)
+  description    String    @db.Text
   url            String    @db.VarChar(512)
   isTutorial     Boolean   @default(false)
   
@@ -82,4 +84,27 @@ model Kriya {
   @@index([product_id])
   @@index([title]) // Added for better search performance
   @@map("kriyas")
+}
+
+model Portofolio {
+  id          String   @id @default(uuid()) // Added primary key
+  url         String
+  uid         String
+  user        User     @relation(fields: [uid], references: [uid], onDelete: Cascade)
+  created_at  DateTime @default(now())
+  updated_at  DateTime? @updatedAt
+  deleted_at  DateTime?
+
+  @@index([uid])
+  @@map("portofolios")
+}
+
+model User {
+  uid   String       @id
+  portofolios Portofolio[]
+  created_at  DateTime     @default(now())
+  updated_at  DateTime?    @updatedAt
+  deleted_at  DateTime?
+
+  @@map("users")
 }

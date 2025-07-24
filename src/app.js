@@ -9,6 +9,7 @@ import BaseError from "./base_classes/base-error.js";
 import routes from "./routes.js";
 import morgan from "morgan";
 import corsMiddleware from "./middlewares/cors-middleware.js";
+import { errorHandler } from "./utils/errorHandler.js";
 
 class ExpressApplication {
   app;
@@ -32,6 +33,7 @@ class ExpressApplication {
     this.setupMiddlewares([
       express.json(),
       express.urlencoded(),
+      errorHandler
     ]);
     this.setupLibrary([
       process.env.NODE_ENV === "development" ? morgan("dev") : "",

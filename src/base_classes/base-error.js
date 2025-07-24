@@ -35,6 +35,10 @@ class BaseError extends Error {
   static duplicate(message = "Duplicate Found") {
     return new BaseError({ ...statusCodes.DUPLICATE, errorName: "Duplicate Found", message });
   }
+
+  static internalServer(message = "Internal Server Error") {
+    return new BaseError({ ...statusCodes.INTERNAL_SERVER_ERROR, errorName: "Internal Server Error", message });
+  }
 }
 
 export default BaseError;

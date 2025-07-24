@@ -8,6 +8,12 @@ class KriyaRoutes extends BaseRoutes {
         this.router.get("/", [
             tryCatch(KriyaController.getKriya)
         ]);
+        this.router.get("/get-name", [
+            tryCatch(KriyaController.getKriyaByName)
+        ]);
+        this.router.get("/:id", [
+            tryCatch(KriyaController.getKriyaById)
+        ]);
     }
 }
 
