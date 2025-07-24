@@ -1,11 +1,8 @@
 import "dotenv/config";
 
-import { __dirname, __filename } from "./utils/path.js";
-
 import express from "express";
 import helmet from "helmet";
 import logger from "./utils/logger.js";
-import path from "path";
 import { queryParser } from "express-query-parser";
 
 import BaseError from "./base_classes/base-error.js";

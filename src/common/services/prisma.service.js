@@ -1,5 +1,5 @@
 // // prisma.service.js
-import { PrismaClient } from "../../generated/prisma/index.js"; // Adjust the import path based on your project structure
+import { PrismaClient } from "../../../prisma/generated/prisma/index.js"; // Adjust the import path based on your project structure
 
 export class PrismaService extends PrismaClient {
   async onModuleInit() {
