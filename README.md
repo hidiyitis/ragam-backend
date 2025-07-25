@@ -1,6 +1,6 @@
-# 🚗 SIXTI TEAM - RAGAM
+# 🧷 SIXTI TEAM - RAGAM 🧶
 
-**Live Demo:** [https://sixti-fe-836115399739.asia-southeast2.run.app/](https://sixti-fe-836115399739.asia-southeast2.run.app/)  
+**Live Demo:** [https://devpost.com/software/ragam-revitalisasi-adat-gaya-dan-makna?ref_content=my-projects-tab&ref_feature=my_projects](https://devpost.com/software/ragam-revitalisasi-adat-gaya-dan-makna?ref_content=my-projects-tab&ref_feature=my_projects)  
 **Frontend Repo:** [https://github.com/hidiyitis/sixti_fe](https://github.com/hidiyitis/sixti_fe)  
 **Backend Repo:** [https://github.com/hidiyitis/ragam-backend](https://github.com/hidiyitis/ragam-backend)  
 
