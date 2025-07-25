@@ -26,6 +26,9 @@ class ProductService {
                     take: limit,
                     orderBy: { 
                         created_at: 'desc' 
+                    },
+                    include: {
+                        photos: true
                     }
                 }),
                 this.prisma.product.count({ where })
