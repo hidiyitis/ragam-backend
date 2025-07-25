@@ -2,7 +2,7 @@ import cors from 'cors';
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://sicermat.otonometer.com',
+  'https://sixti-fe-836115399739.asia-southeast2.run.app',
 ];
 
 const corsMiddleware = cors({
