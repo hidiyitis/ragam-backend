@@ -9,10 +9,9 @@ const __dirname = dirname(__filename);
 
 class StorageService {
   constructor() {
-    console.log(__dirname);
-    
+    const credentials = JSON.parse(process.env.GCLOUD_CREDENTIALS);
     this.storage = new Storage({
-      keyFilename: join(__dirname, '../../config/gcs-keyfile.json'),
+      credentials,
       projectId: process.env.GCLOUD_PROJECT_ID
     });
     this.bucketName = process.env.GCLOUD_BUCKET_NAME;
